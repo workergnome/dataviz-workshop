@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>D3 Scatterplot Example</title>
+
+    <meta charset="utf-8">
+
+    <!-- Set up the styles for the document -->
+    <style>
+
+      body { font: 10px sans-serif; }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+      .dot { 
+        opacity: 0.2; 
+        shape-rendering: crispEdges;
+      }
+
+    </style>
+
+    <!-- import d3 -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+  </head>
+
+  <body>
+    <!-- inline javascript code -->
+    <script>
+
+    // Declare margins, width, and height.
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 1300 - margin.left - margin.right,
+        height = 700 - margin.top - margin.bottom;
+
+
+    // Create scales ----------------------------------------------------------
+    var x = d3.scale.linear()
+        .range([0, width]);
+    
+    var y = d3.scale.log()
+        .range([height, 0]);
+    
+    var color = d3.scale.category20();
+
+
+    // Create Axis ------------------------------------------------------------
+
+    // This defines a variable containing a generated function 
+    // that will be passed into the d3.call function below.
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .tickFormat(d3.format("d"))
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+    // Create base SVG --------------------------------------------------------
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Load data from a CSV  --------------------------------------------------
+    
+    d3.csv("/data/dims.csv")
+      .get(function(error, data) { // <- callback 
+
+        //  Reformat data. ----------------------------------------------------
+        
+        data.forEach(function(d) {
+            d.year = d.acquisition; 
+            d.name = d.title;
+            d.category = +d.special;
+            d.area = +d.area; 
+        });
+
+        // Set up our domains.  -----------------------------------------------
+        // These are the ranges of values for the scales, automatically 
+        // calculated from the data.
+        x.domain(d3.extent(data, function(d) { return d.year; })).nice();
+        y.domain(d3.extent(data, function(d) { return d.area; })).nice();
+
+        // Add the X axis to the SVG. -----------------------------------------
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis) // <- magic line that draws the axis
+          .append("text")
+            .attr("class", "label")
+            .attr("x", width)
+            .attr("y", -6)
+            .style("text-anchor", "end")
+            .text("Year");
+
+        // Add the Y axis to the SVG. -----------------------------------------
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis) // <- magic line that draws the axis
+          .append("text")
+            .attr("class", "label")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text("Area (in^2)")
+
+        // Add the dots -------------------------------------------------------
+
+        svg.selectAll(".dot")   // <- magic line #1
+            .data(data)         // <- magic line #2
+          .enter()              // <- magic line #3
+            .append("circle") 
+            .attr("class", "dot")
+            .attr("r", 3.5)
+            .attr("cx", function(d) { return x(d.year); })
+            .attr("cy", function(d) { return y(d.area); })
+            .style("fill", function(d) { return color(d.category); })
+            .append("svg:title")
+              .text(function(d) { return d.name; });
+      });
+    </script>
+  </body>
+</html>
+
