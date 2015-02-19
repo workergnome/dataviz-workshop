@@ -1,15 +1,16 @@
 ## Data Visualization Workshop
 
 
-## Bar Chart
+This is a repository of examples used in the Data Visualization workshop.  In it, there are three versions of the same bar chart, and three versions of the same scatterplot.  One of each is done using the [Highcharts](http://www.highcharts.com/) library, one is done using [P5.js](http://p5js.org/), and one is done using [D3](http://d3js.org/).  
 
-* <http://www.highcharts.com/docs/getting-started/installation>
-* <http://bost.ocks.org/mike/bar/>
+## Bar Charts
 
+The bar charts are basic examples, showing how to generate simple charts using each example.  
+they're based on [the Highcharts intro tutorial](http://www.highcharts.com/docs/getting-started/installation), [Mike Bostocks's bar chart tutorial](http://bost.ocks.org/mike/bar/), and the [p5 examples](http://p5js.org/learn/#examples).
 
-This is a repository of examples used in the Data Visualization workshop.  In it, there are three versions of the same scatterplot.  One of these is done using the [Highcharts](http://www.highcharts.com/) library, one is done using [P5.js](http://p5js.org/), and one is done using [D3](http://d3js.org/).  
+## Scatterplots
 
-The data itself comes from the [Carnegie Museum of Art](http://www.cmoa.org) collection API, which is still in private beta.  We're using it to graph the size of artwork (in square inches) against the year the museum acquired the artwork.  This is useful because it shows changes in the collection choices that the museum has made over the years, and also because it's just a lot of interesting data that I have access to.
+The data for the scatterplots comes from the [Carnegie Museum of Art](http://www.cmoa.org) collection API, which is still in private beta.  We're using it to graph the size of artwork (in square inches) against the year the museum acquired the artwork.  This is useful because it shows changes in the collection choices that the museum has made over the years, and also because it's just a lot of interesting data that I have access to.
 
 We're also going to call out large acquisition lots; collections of artwork obtained at the same time from the same person.  We'll tag those with special colors.
 
@@ -55,7 +56,7 @@ In order to display this information usefully, we'll need to use a log scale. Th
 ---
 
 
-## Simple HTTP Server
+## Simple Local HTTP Server
 
 Because we are loading external resources, it's usually easier to serve these files locally.   The easiest way I know of to serve HTML pages is to use to view these files is to use [Python's SimpleHTTPServer](http://www.pythonforbeginners.com/modules-in-python/how-to-use-simplehttpserver/).  To use it, navigate to a directory that you'd like to serve, and type:
 
