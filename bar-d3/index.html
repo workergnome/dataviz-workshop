@@ -50,14 +50,16 @@
         // create a grouping object for each item in data
         var bar = chart.selectAll("g")
           .data(data)             // <- assign the data to the object
-          .enter().append("g")    // <- on enter, add a group object to the svg
-        
+          
+        bar.enter().append("g")   // <- on enter, add a group object to the svg 
 
-             // for each item in data, call a function and set its 
-             // transform attribute to the return value of the function.
-             // 'd' is the value of the data, 'i' is the index.
-             // This will move the bars down to the right position.
-            .attr("transform", function(d, i) {     
+        bar.exit().remove("g")    // <- on exit, remove the group object.
+
+         // for each item in data, call a function and set its 
+         // transform attribute to the return value of the function.
+         // 'd' is the value of the data, 'i' is the index.
+         // This will move the bars down to the right position.
+        bar.attr("transform", function(d, i) {     
                 return "translate(0," + i * barHeight + ")"; 
             });
 
@@ -65,7 +67,7 @@
         bar.append("rect")
             .attr("height", barHeight - 1)
             .attr("width", x); // <- call the x function, passing in d, and use the
-                               //    returned value as the width of the rectangle.
+                                  //    returned value as the width of the rectangle.
 
         // append the label
         bar.append("text")
@@ -76,7 +78,7 @@
     </script>
 
     <div>
-        <a href="http://bost.ocks.org/mike/bar/">For more information, see this original tutorial.</a>
+        <small><a href="http://bost.ocks.org/mike/bar/">For more information, see this original tutorial.</a></small>
     </div>
   </body>
 </html>

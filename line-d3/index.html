@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>D3 Line Example</title>
+
+    <meta charset="utf-8">
+
+    <!-- Set up the styles for the document -->
+    <style>
+
+    body {
+      font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .x.axis path {
+      display: none;
+    }
+
+    .line {
+      fill: none;
+      stroke: steelblue;
+      stroke-width: 1.5px;
+    }
+
+    </style>
+
+    <!-- import d3 -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- inline javascript code -->
+    <script>
+
+        var margin = {top: 20, right: 20, bottom: 30, left: 100},
+            width = 1400 - margin.left - margin.right,
+            height = 600 - margin.top - margin.bottom;
+
+        var parseDate = d3.time.format("%d-%b-%y").parse;
+
+        // create the x scale
+        var x = d3.scale.linear()
+            .range([0, width]);
+
+        // create the y scale
+        var y = d3.scale.linear()
+            .range([height, 0]);
+
+        // create the x axis
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+        // create the y axis
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left");
+
+        // create the line function
+        var line = d3.svg.line()
+            .x(function(d) { return x(d.num); })
+            .y(function(d) { return y(d.val); });
+
+        // create the SVG object
+        var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // load the data, create the callback
+        d3.csv("/data/100_0102.txt").get(function(error, data) {
+          
+          // initialize data
+          data.forEach(function(d,i) {
+            d.num = i;
+            d.val = +d[0];
+          });
+
+          // set domains
+          x.domain(d3.extent(data, function(d) { return d.num; }));
+          y.domain(d3.extent(data, function(d) { return d.val; }));
+
+          // append the x axis
+          svg.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(xAxis);
+
+          // append the y axis
+          svg.append("g")
+              .attr("class", "y axis")
+              .call(yAxis)
+            .append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", 6)
+              .attr("dy", ".71em")
+              .style("text-anchor", "end")
+              .text("Number of results");
+
+          // append the line
+          svg.append("path")
+              .datum(data)
+              .attr("class", "line")
+              .attr("d", line);
+        });
+    </script>
+
+    <div>
+        <small><a href="http://bl.ocks.org/mbostock/3883245">For more information, see this original tutorial.</a></small>
+    </div>
+  </body>
+</html>
+
