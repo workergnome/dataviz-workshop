@@ -33,7 +33,7 @@
     <script>
 
     // Declare margins, width, and height.
-    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    var margin = {top: 20, right: 20, bottom: 30, left: 60},
         width = 1300 - margin.left - margin.right,
         height = 700 - margin.top - margin.bottom;
 
@@ -42,7 +42,7 @@
     var x = d3.scale.linear()
         .range([0, width]);
     
-    var y = d3.scale.log()
+    var y = d3.scale.linear()
         .range([height, 0]);
     
     var color = d3.scale.category20();
@@ -78,7 +78,7 @@
         data.forEach(function(d) {
             d.year = d.acquisition; 
             d.name = d.title;
-            d.category = +d.special;
+            d.category = +d.group;
             d.area = +d.area; 
         });
 
