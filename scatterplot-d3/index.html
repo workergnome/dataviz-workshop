@@ -76,7 +76,7 @@
         //  Reformat data. ----------------------------------------------------
         
         data.forEach(function(d) {
-            d.year = d.acquisition; 
+            d.year = +d.acquisition; 
             d.name = d.title;
             d.category = +d.group;
             d.area = +d.area; 

@@ -22,8 +22,8 @@ function draw() {
   var x1,x2,y1,y2;
 
   // set up colors
-  var maxY = 150000000;
   var maxX = data.getRowCount();
+  var maxY = 150000000;
 
   textSize(10);
 

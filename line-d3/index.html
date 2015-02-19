@@ -44,8 +44,6 @@
             width = 1400 - margin.left - margin.right,
             height = 600 - margin.top - margin.bottom;
 
-        var parseDate = d3.time.format("%d-%b-%y").parse;
-
         // create the x scale
         var x = d3.scale.linear()
             .range([0, width]);
