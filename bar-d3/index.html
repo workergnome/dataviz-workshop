@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>D3 Bar Chart Example</title>
+
+    <meta charset="utf-8">
+
+    <!-- Set up the styles for the document -->
+    <style>
+
+      .chart rect {
+        fill: steelblue;
+      }
+
+      .chart text {
+        fill: white;
+        font: 10px sans-serif;
+        text-anchor: end;
+      }
+
+    </style>
+
+    <!-- import d3 -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+  </head>
+
+  <body>
+    <svg class="chart"></svg>
+
+    <!-- inline javascript code -->
+    <script>
+
+        // declare your data
+        var data = [4, 8, 15, 16, 23, 42];
+
+        // set up initial variables for sizing.                
+        var width     = 1200,
+            barHeight = 60;
+
+        // set up your x scale
+        var x = d3.scale.linear()
+            .domain([0, d3.max(data)])
+            .range([0, width]);
+
+        // set up the SVG
+        var chart = d3.select(".chart")
+            .attr("width", width)
+            .attr("height", barHeight * data.length);
+
+        // create a grouping object for each item in data
+        var bar = chart.selectAll("g")
+          .data(data)             // <- assign the data to the object
+          .enter().append("g")    // <- on enter, add a group object to the svg
+        
+
+             // for each item in data, call a function and set its 
+             // transform attribute to the return value of the function.
+             // 'd' is the value of the data, 'i' is the index.
+             // This will move the bars down to the right position.
+            .attr("transform", function(d, i) {     
+                return "translate(0," + i * barHeight + ")"; 
+            });
+
+        // append the rectangle that is the the actual bar
+        bar.append("rect")
+            .attr("height", barHeight - 1)
+            .attr("width", x); // <- call the x function, passing in d, and use the
+                               //    returned value as the width of the rectangle.
+
+        // append the label
+        bar.append("text")
+            .attr("x", function(d) { return x(d) - 3; })
+            .attr("y", barHeight / 2)
+            .attr("dy", ".35em")
+            .text(function(d) { return d; });
+    </script>
+
+    <div>
+        <a href="http://bost.ocks.org/mike/bar/">For more information, see this original tutorial.</a>
+    </div>
+  </body>
+</html>
+

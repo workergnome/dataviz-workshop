@@ -68,7 +68,7 @@ function draw() {
 
 
     // set our color
-    fill(getPalette(parseFloat(currentRow.get('special'))));
+    fill(getPalette(parseFloat(currentRow.get('group'))));
 
     // draw a circle
     ellipse(x,y,6,6);    

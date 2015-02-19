@@ -1,5 +1,12 @@
 ## Data Visualization Workshop
 
+
+## Bar Chart
+
+* <http://www.highcharts.com/docs/getting-started/installation>
+* <http://bost.ocks.org/mike/bar/>
+
+
 This is a repository of examples used in the Data Visualization workshop.  In it, there are three versions of the same scatterplot.  One of these is done using the [Highcharts](http://www.highcharts.com/) library, one is done using [P5.js](http://p5js.org/), and one is done using [D3](http://d3js.org/).  
 
 The data itself comes from the [Carnegie Museum of Art](http://www.cmoa.org) collection API, which is still in private beta.  We're using it to graph the size of artwork (in square inches) against the year the museum acquired the artwork.  This is useful because it shows changes in the collection choices that the museum has made over the years, and also because it's just a lot of interesting data that I have access to.
