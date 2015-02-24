@@ -1,7 +1,7 @@
 ## Data Visualization Workshop
 
 
-This is a repository of examples used in the Data Visualization workshop.  In it, there are three versions of the same bar chart, and three versions of the same scatterplot.  One of each is done using the [Highcharts](http://www.highcharts.com/) library, one is done using [P5.js](http://p5js.org/), and one is done using [D3](http://d3js.org/).  
+This is a repository of examples used in the Data Visualization workshop.  In it, there are three versions of the same bar chart, three versions of the same line graph, and three versions of the same scatterplot.  One of each is done using the [Highcharts](http://www.highcharts.com/) library, one is done using [P5.js](http://p5js.org/), and one is done using [D3](http://d3js.org/).  
 
 ## Bar Charts
 
@@ -46,7 +46,17 @@ $(function () {
 
 ```
 
-It uses [jQuery](https://jquery.com) to handle DOM load interaction and other interactions, and is itself a jQuery plugin.  To create a Highchart chart, you use a jQuery selector to choose a DOM object, and you call the `highcharts` method on the jQuery object, and pass in a configuration object.   The minimum you need is a chart type and a data series.
+Highcharts uses [jQuery](https://jquery.com) to handle DOM load interaction and other interactions, and is itself a jQuery plugin.  To create a Highchart chart, you use a jQuery selector to choose a DOM object, and you call the `highcharts` method on the jQuery object, and pass in a configuration object.   The minimum you need is a chart type and a data series.
+
+#### p5.js
+
+p5.js by default creates an `index.html` and a `sketch.js` file.  The index file has very little in it—just basic HTML setup and a link to the javascript files.
+
+In `sketch.js`, we have the traditional `setup()` and `draw()` functions from most creative coding environments.   `setup()` will run once, on initialization, and `draw()` will run continuously, once for each frame of the visualization.  We've also declared a global variable, `data`, to hold our data.
+
+The p5 sketch iterates through a for loop, drawing a rectangle for each bar.  It is also using a drawing state matrix to handle position—this is the `push()` and `pop()` functions that wrap the actual drawing text.
+
+*(Note that all our examples use a local version of p5.  The released version has issues with csv parsing, and will not work.  This has been fixed in Master, and will function properly after the next release of p5.js.(*
 
 ## Line Charts
 
