@@ -8,7 +8,28 @@ This is a repository of examples used in the Data Visualization workshop.  In it
 The bar charts are basic examples, showing how to generate simple charts using each example.  
 they're based on [the Highcharts intro tutorial](http://www.highcharts.com/docs/getting-started/installation), [Mike Bostocks's bar chart tutorial](http://bost.ocks.org/mike/bar/), and the [p5 examples](http://p5js.org/learn/#examples).
 
+This is the most basic form of chart that we're going to show—it's just a quick example of how to draw something with each library.
+
+
+the data is:
+
+|value|
+|----:|
+|4    |
+|8    |
+|15   |
+|16   |
+|23   |
+|42   |
+
+We'll graph this on the horizontal axis, with inline labels (or the default style, for Highcharts).  
+
+
 ## Line Charts
+
+The linecharts are a slightly more complicated example.  The data is still 1-dimensional, but there are many more points.  The source of the data is from [Golan Levin's Secret Lives of Numbers](http://flong.com/projects/slon/) project.  We're only using the first 100 numbers, rather than all 100K.
+
+This is slightly more complicated, since we're now loading data from an external source.   We're also adding axis, which is trivial in highcharts, a function of d3, and significantly more complicated in p5.
 
 ## Scatterplots
 
