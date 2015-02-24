@@ -6,7 +6,7 @@ var data;
 // Setup function.  
 
 function setup() {
-  // Initialize your dat
+  // Initialize your data
   data = [4, 8, 15, 16, 23, 42];  
 
   // create a drawing area 
@@ -26,7 +26,7 @@ function draw() {
   // iterate through the data
   for(var i = 0; i < data.length; i++) {    
 
-    // calculate position  variables
+    // calculate position variables
     x = 0;
     y = (height*(i/data.length));
     w = width/max(data)*data[i];
