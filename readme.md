@@ -25,9 +25,32 @@ the data is:
 We'll graph this on the horizontal axis, with inline labels (or the default style, for Highcharts).  
 
 
+#### Highcharts
+
+the complete javascript code for the Highcharts object is:
+
+```javascript
+
+$(function () { 
+
+    // Set up a basic bar chart
+    $('#container').highcharts({
+        chart: {
+        type: 'bar'  // <- Chart type
+        },
+        series: [{
+            data: [4, 8, 15, 16, 23, 42]
+        }]
+    });
+});
+
+```
+
+It uses [jQuery](https://jquery.com) to handle DOM load interaction and other interactions, and is itself a jQuery plugin.  To create a Highchart chart, you use a jQuery selector to choose a DOM object, and you call the `highcharts` method on the jQuery object, and pass in a configuration object.   The minimum you need is a chart type and a data series.
+
 ## Line Charts
 
-The linecharts are a slightly more complicated example.  The data is still 1-dimensional, but there are many more points.  The source of the data is from [Golan Levin's Secret Lives of Numbers](http://flong.com/projects/slon/) project.  We're only using the first 100 numbers, rather than all 100K.
+The linecharts are a slightly more complicated example.  The data is still 1-dimensional, but there are many more points.  The source of the data is from [Golan Levin's Secret Lives of Numbers](http://flong.com/projects/slon/) project.  We're only using the first 100 numbers, rather than 100K.
 
 This is slightly more complicated, since we're now loading data from an external source.   We're also adding axis, which is trivial in highcharts, a function of d3, and significantly more complicated in p5.
 
