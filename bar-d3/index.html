@@ -55,10 +55,10 @@
 
         bar.exit().remove("g")    // <- on exit, remove the group object.
 
-         // for each item in data, call a function and set its 
-         // transform attribute to the return value of the function.
-         // 'd' is the value of the data, 'i' is the index.
-         // This will move the bars down to the right position.
+         /* for each item in data, call a function and set its 
+            transform attribute to the return value of the function.
+            'd' is the value of the data, 'i' is the index.
+            This will move the bars down to the right position. */
         bar.attr("transform", function(d, i) {     
                 return "translate(0," + i * barHeight + ")"; 
             });

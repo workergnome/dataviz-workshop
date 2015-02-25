@@ -8,7 +8,7 @@ var data;
 function setup() {
   noLoop();
 
-  // Initialize your dat
+  // Initialize your data
   data = loadTable("/data/100_0102.txt","csv",handleDataLoad);  
 
   // create a drawing area 
@@ -21,13 +21,13 @@ function draw() {
   // initialize variables
   var x1,x2,y1,y2;
 
-  // set up colors
+  // set up bounds
   var maxX = data.getRowCount();
   var maxY = 150000000;
 
   textSize(10);
 
-  // iterate throgh the data
+  // iterate through the data
   for(var i = 0; i < maxX; i++) {    
     stroke(50);
     noFill();
