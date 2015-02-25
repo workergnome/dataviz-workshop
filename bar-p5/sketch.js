@@ -23,10 +23,10 @@ function draw() {
   noStroke();
   fill(80,80,200);
 
-  // iterate throgh the data
+  // iterate through the data
   for(var i = 0; i < data.length; i++) {    
 
-    // calculate position  variables
+    // calculate position variables
     x = 0;
     y = (height*(i/data.length));
     w = width/max(data)*data[i];

@@ -35,10 +35,10 @@
         data: {
           csv: csvData,  // <- set the data source
          
-          // this is a callback that happens after the data is loaded, but
-          // before it is parsed.  This lets you modify the data before highcharts
-          // processes it.
-          //
+          /* This is a callback that happens after the data is loaded, but
+             before it is parsed.  This lets you modify the data before highcharts
+             processes it. */
+          
           parsed: function (columns) {
             columns.unshift([]);
             for (var i = 0; i < columns[1].length; i++) {
