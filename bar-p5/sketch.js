@@ -6,7 +6,7 @@ var data;
 // Setup function.  
 
 function setup() {
-  // Initialize your dat
+  // Initialize your data
   data = [4, 8, 15, 16, 23, 42];  
 
   // create a drawing area 

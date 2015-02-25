@@ -56,7 +56,7 @@ In `sketch.js`, we have the traditional `setup()` and `draw()` functions from mo
 
 The p5 sketch iterates through a for loop, drawing a rectangle for each bar.  It is also using a drawing state matrix to handle position—this is the `push()` and `pop()` functions that wrap the actual drawing text.
 
-*(Note that all our examples use a local version of p5.  The released version has issues with csv parsing, and will not work.  This has been fixed in Master, and will function properly after the next release of p5.js.(*
+*(Note that all our examples use a local version of p5.  The released version has issues with csv parsing, and will not work.  This has been fixed in Master, and will function properly after the next release of p5.js.)*
 
 ## Line Charts
 

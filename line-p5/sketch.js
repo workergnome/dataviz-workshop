@@ -21,7 +21,7 @@ function draw() {
   // initialize variables
   var x1,x2,y1,y2;
 
-  // set up colors
+  // set up bounds
   var maxX = data.getRowCount();
   var maxY = 150000000;
 
